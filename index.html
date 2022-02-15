@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo APP</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "./js/vue.esm-browser.js"
+        }
+      }
+    </script>
+    <script src="./js/tailwindcss_forms.js"></script>
+  </head>
+  <style type="text/tailwindcss">
+    .btn {
+      @apply rounded-md shadow-md hover:shadow-xl px-4 py-[6px] transition;
+    }
+    .list-enter-active,
+    .list-leave-active {
+      transition: all 0.5s ease;
+    }
+    .list-enter-from,
+    .list-leave-to {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+  </style>
+  <body class="bg-stone-100">
+    <div id="app">
+      <div class="mx-auto my-20">
+        <h1
+          class="text-4xl font-bold tracking-tighter text-center uppercase text-stone-900"
+        >
+          Todo APP
+        </h1>
+      </div>
+      <div class="flex items-center justify-center mx-auto">
+        <input
+          type="text"
+          v-model="contentModel"
+          @keyup.enter="addTodo"
+          placeholder="Input your todo here..."
+          ref="contentEl"
+          class="w-2/5 mx-5 border-none rounded-lg shadow-lg h-1/2 placeholder:italic placeholder-stone-400 text-stone-600"
+        />
+        <button
+          @click="addTodo"
+          class="btn bg-stone-600 hover:bg-stone-900 text-stone-100 hover:text-stone-200"
+        >
+          Save
+        </button>
+      </div>
+      <div class="mx-auto my-16">
+        <transition-group name="list">
+          <div
+            v-for="({content, done}, i) in todos"
+            :key="i"
+            class="flex items-center justify-start max-w-sm p-2 mx-auto my-5 bg-white rounded-lg shadow-md"
+          >
+            <input
+              type="checkbox"
+              :checked="done"
+              @click="markTodo(i)"
+              class="mx-2 transition rounded-sm shadow border-stone-600 focus:outline-none"
+            />
+            <p
+              @click.prevent="markTodo(i)"
+              :class="{'line-through':done}"
+              style="cursor: pointer"
+              class="text-xl break-all transition text-stone-600"
+            >
+              {{content}}
+            </p>
+            <button
+              @click="removeTodo(i)"
+              class="mx-5 btn !py-0 bg-red-500 text-stone-100 ml-auto hover:bg-red-900 hover:text-stone-50"
+            >
+              X
+            </button>
+          </div>
+        </transition-group>
+        <div v-if="todos.length >= 1" class="fixed right-5 bottom-5">
+          <button
+            @click="checkAll"
+            class="mx-2 bg-green-500 btn hover:bg-green-800 text-stone-50"
+          >
+            Check All
+          </button>
+          <button
+            @click="removeAll"
+            class="btn bg-rose-500 hover:bg-rose-800 text-stone-100 hover:text-stone-50"
+          >
+            Remove All
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script src="./js/index.js" type="module"></script>
