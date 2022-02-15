@@ -1,0 +1,21 @@
+{
+  "name": "Todo APP",
+  "short_name": "Todo",
+  "description": "A Simple Todo App.",
+  "icons": [
+    {
+      "src": "./assets/images/icon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "fullscreen",
+  "theme_color": "#f5f5f4",
+  "background_color": "#f5f5f4"
+}
