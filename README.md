@@ -2,9 +2,9 @@
 
 A self-contained to-do list for one person. You add a task, tick it off when it is done, and remove it when it is no longer needed; Check All and Remove All act on the whole list at once. There is no sign-up, account, or server: the list is stored in your own browser and survives a page reload, but nothing is shared or synced between devices. It gives you a working task list with nothing to install or configure.
 
-![The Todo APP home screen: a heading, a task input with a Save button, and an empty task list](docs/screenshots/01-home.png)
+![The Todo APP home screen with a task list of five sample tasks, two already ticked off](docs/screenshots/01-home.png)
 
-The list starts empty. Check All and Remove All stay hidden until at least one task exists.
+Check All and Remove All sit at the bottom-right once at least one task exists.
 
 ## What you can do
 
@@ -31,6 +31,5 @@ You can also serve the repository root with any static HTTP server — the page 
 
 ## Limitations
 
-- There is no backend or sign-in, so tasks live only in this browser's local storage under `todos`. Clearing site data or browsing privately loses them, and they never appear on another browser or device.
-- The list ships with no starting tasks; the Check All and Remove All controls only show up once you add one.
+- The whole list lives in one browser's local storage under the key `todos`. Clearing site data or browsing privately means starting fresh, and the list never appears in another browser or on another device.
 - How the vendored Vue and Tailwind files were obtained is not recorded — there is no `package.json` — and no manifest pins the exact Vue 3 version: both `3.0.8` and `3.2.31` appear in the vendored build.
